@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ClearView: Instant unbiased fact checker for news, claims, and headlines. Plus, discover and share mind-blowing movies in our community section.">
+    <meta name="keywords" content="fact check, instant fact checker, news bias detector, misinformation checker, mind blowing movies, best plot twist films 2025">
+    <title>ClearView - Instant Truth Checker & MindBlow Cinema</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f7fa; color: #333; line-height: 1.6; }
+        header { background: #0d47a1; color: white; padding: 40px 20px; text-align: center; }
+        h1 { margin: 0; font-size: 2.8em; }
+        .tagline { font-size: 1.4em; margin: 10px 0; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
+        section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        input, textarea, button { padding: 12px; margin: 10px 0; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 1em; }
+        button { background: #0d47a1; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #1565c0; }
+        #result { margin-top: 20px; padding: 20px; background: #e3f2fd; border-radius: 8px; display: none; }
+        .movie-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .movie-card { background: #f9f9f9; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .movie-card img { width: 100%; border-radius: 8px; }
+        footer { text-align: center; padding: 20px; background: #0d47a1; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ClearView</h1>
+        <p class="tagline">See the truth behind any story — in seconds.</p>
+    </header>
+
+    <div class="container">
+        <!-- Fact Checker Section -->
+        <section id="fact-checker">
+            <h2>Instant Truth Checker</h2>
+            <p>Paste a headline, article link, claim, or quote:</p>
+            <textarea id="claim" rows="4" placeholder="e.g., 'The moon landing was faked'"></textarea>
+            <button onclick="checkClaim()">Check Now</button>
+            <div id="result"></div>
+        </section>
+
+        <!-- MindBlow Cinema Section -->
+        <section id="mindblow-cinema">
+            <h2>MindBlow Cinema</h2>
+            <p>Discover, share, and discuss the greatest mind-blowing movies that bend reality, twist plots, and change how you see the world.</p>
+            
+            <h3>Community Recommendations</h3>
+            <div id="movie-list" class="movie-list"></div>
+
+            <h3>Share Your Mind-Blowing Pick</h3>
+            <input type="text" id="movie-title" placeholder="Movie Title (e.g., Inception)">
+            <input type="text" id="movie-year" placeholder="Year (e.g., 2010)">
+            <textarea id="movie-why" rows="3" placeholder="Why is it mind-blowing?"></textarea>
+            <button onclick="addMovie()">Add Recommendation</button>
+        </section>
+    </div>
+
+    <footer>
+        <p>ClearView — Built for clarity and human connection. Revolution starts here. 🚀</p>
+    </footer>
+
+    <script>
+        // Simulated Fact Check (expand later with real API integration)
+        function checkClaim() {
+            const claim = document.getElementById('claim').value.trim();
+            if (!claim) return alert('Paste something to check!');
+            const result = document.getElementById('result');
+            result.style.display = 'block';
+            result.innerHTML = `
+                <h3>Analysis for: "${claim}"</h3>
+                <p><strong>Verified Truth:</strong> [Simulated: Mostly balanced sources confirm core facts.]</p>
+                <p><strong>Bias Rating:</strong> Neutral to center-left (multiple viewpoints checked).</p>
+                <p><strong>Missing Context:</strong> Often overlooks [simulated detail].</p>
+                <p><em>Real version coming soon — powered by balanced sources from all sides.</em></p>
+            `;
+        }
+
+        // MindBlow Movies Community (localStorage persistence)
+        const starterMovies = [
+            { title: "Inception", year: 2010, why: "Dreams within dreams, reality-bending action, and a spinning top that haunts you forever.", poster: "https://images.squarespace-cdn.com/content/v1/5ec686197f8b2976074846c2/1618808739151-PKSPYXYU8S9COG5BJHO2/Inception_01+CMYK.jpg" },
+            { title: "The Matrix", year: 1999, why: "Red pill or blue? Questions reality itself and kickstarted a philosophical revolution.", poster: "https://filmartgallery.com/cdn/shop/products/The-Matrix-Vintage-Movie-Poster-Original.jpg?v=1738903563" },
+            { title: "Interstellar", year: 2014, why: "Time dilation, black holes, love across dimensions — science and emotion that blows minds.", poster: "https://m.media-amazon.com/images/I/71ljC3i-8uL._AC_UF894,1000_QL80_.jpg" }
+        ];
+
+        function loadMovies() {
+            const saved = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
+            const list = document.getElementById('movie-list');
+            list.innerHTML = '';
+            saved.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    ${movie.poster ? `<img src="${movie.poster}" alt="${movie.title} poster">` : ''}
+                    <h3>${movie.title} (${movie.year})</h3>
+                    <p><strong>Why mind-blowing:</strong> ${movie.why}</p>
+                `;
+                list.appendChild(card);
+            });
+            localStorage.setItem('mindblowMovies', JSON.stringify(saved));
+        }
+
+        function addMovie() {
+            const title = document.getElementById('movie-title').value.trim();
+            const year = document.getElementById('movie-year').value.trim();
+            const why = document.getElementById('movie-why').value.trim();
+            if (!title || !why) return alert('Fill in title and why!');
+            
+            const movies = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
+            movies.push({ title, year, why, poster: '' }); // Poster optional for now
+            localStorage.setItem('mindblowMovies', JSON.stringify(movies));
+            document.getElementById('movie-title').value = '';
+            document.getElementById('movie-year').value = '';
+            document.getElementById('movie-why').value = '';
+            loadMovies();
+        }
+
+        loadMovies(); // Initial load
+    </script>
+</body>
+</html>
