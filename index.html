@@ -79,13 +79,13 @@
 
     <script>
         // Replace with your Google API key
-        const API_KEY = 'AIzaSyDUpHCwsOV6HhHRv-ZW-1DhzaZZ2JBXc48'; // Get from console.cloud.google.com
+        const API_KEY = 'AIzaSyD_LVYBibLD15SLwCGlyHJRoWTdmS2l7Ic'; // Get from console.cloud.google.com
 
         // Real Fact Check via Google API
         async function checkClaim() {
             const claim = document.getElementById('claim').value.trim();
             if (!claim) return alert('Paste something to check!');
-            if (API_KEY === 'AIzaSyDUpHCwsOV6HhHRv-ZW-1DhzaZZ2JBXc48') return alert('Add your Google API key first!');
+            if (API_KEY === 'AIzaSyD_LVYBibLD15SLwCGlyHJRoWTdmS2l7Ic') return alert('Add your Google API key first!');
 
             const result = document.getElementById('result');
             result.style.display = 'block';
@@ -196,4 +196,5 @@
     </script>
 </body>
 </html>
+
 
