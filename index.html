@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ClearView: Instant unbiased fact checker for news, claims, and headlines. Plus, discover and share mind-blowing movies in our community section.">
-    <meta name="keywords" content="fact check, instant fact checker, news bias detector, misinformation checker, mind blowing movies, best plot twist films 2025">
-    <meta name="google-site-verification" content="FSUl1XcV0bWYFavFKqU8diK--21sa7lX02STn_D_g94" />
-    <title>ClearView - Instant Truth Checker & MindBlow Cinema</title>
+    <meta name="description" content="ClearView: Free instant fact checker using Google API for unbiased news verification. Plus, share mind-blowing movies and promote ethical businesses for positive impact.">
+    <meta name="keywords" content="free fact checker, instant fact checking API, news bias detector, ethical business promotion, mind blowing movies 2025, misinformation tool">
+    <title>ClearView - Free Fact Checker, MindBlow Cinema & Ethical Business Spotlight</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f7fa; color: #333; line-height: 1.6; }
         header { background: #0d47a1; color: white; padding: 40px 20px; text-align: center; }
@@ -15,27 +13,29 @@
         .tagline { font-size: 1.4em; margin: 10px 0; }
         .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
         section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        input, textarea, button { padding: 12px; margin: 10px 0; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 1em; }
+        input, textarea, button { padding: 12px; margin: 10px 0; width: 100%; border-radius: 8px; border: 1px solid #ccc; font-size: 1em; box-sizing: border-box; }
         button { background: #0d47a1; color: white; border: none; cursor: pointer; font-weight: bold; }
         button:hover { background: #1565c0; }
         #result { margin-top: 20px; padding: 20px; background: #e3f2fd; border-radius: 8px; display: none; }
-        .movie-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .movie-card { background: #f9f9f9; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .movie-card img { width: 100%; border-radius: 8px; }
+        .verdict { font-weight: bold; font-size: 1.2em; margin: 10px 0; }
+        .source { color: #0d47a1; text-decoration: none; }
+        .movie-list, .business-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: #f9f9f9; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .card img { width: 100%; border-radius: 8px; }
         footer { text-align: center; padding: 20px; background: #0d47a1; color: white; }
     </style>
 </head>
 <body>
     <header>
         <h1>ClearView</h1>
-        <p class="tagline">See the truth behind any story — in seconds.</p>
+        <p class="tagline">Free instant truth checker + community for movies & ethical businesses.</p>
     </header>
 
     <div class="container">
         <!-- Fact Checker Section -->
         <section id="fact-checker">
-            <h2>Instant Truth Checker</h2>
-            <p>Paste a headline, article link, claim, or quote:</p>
+            <h2>Free Instant Fact Checker (Powered by Google API)</h2>
+            <p>Paste a headline, claim, or quote for unbiased verification from trusted sources:</p>
             <textarea id="claim" rows="4" placeholder="e.g., 'The moon landing was faked'"></textarea>
             <button onclick="checkClaim()">Check Now</button>
             <div id="result"></div>
@@ -44,7 +44,7 @@
         <!-- MindBlow Cinema Section -->
         <section id="mindblow-cinema">
             <h2>MindBlow Cinema</h2>
-            <p>Discover, share, and discuss the greatest mind-blowing movies that bend reality, twist plots, and change how you see the world.</p>
+            <p>Discover, share, and discuss the greatest mind-blowing movies.</p>
             
             <h3>Community Recommendations</h3>
             <div id="movie-list" class="movie-list"></div>
@@ -55,29 +55,70 @@
             <textarea id="movie-why" rows="3" placeholder="Why is it mind-blowing?"></textarea>
             <button onclick="addMovie()">Add Recommendation</button>
         </section>
+
+        <!-- Business Promotion Section -->
+        <section id="business-spotlight">
+            <h2>Spotlight Ethical Businesses</h2>
+            <p>Promote your positive-impact business here — tools for truth, creativity, or sustainability. Get featured to reach our growing community!</p>
+            
+            <h3>Featured Businesses</h3>
+            <div id="business-list" class="business-list"></div>
+
+            <h3>Submit Your Business</h3>
+            <input type="text" id="business-name" placeholder="Business Name">
+            <input type="text" id="business-url" placeholder="Website URL">
+            <textarea id="business-desc" rows="3" placeholder="Why promote? (e.g., 'AI tool for media literacy')"></textarea>
+            <button onclick="addBusiness()">Submit for Feature</button>
+            <p><em>Submissions reviewed & featured (local for now; global soon).</em></p>
+        </section>
     </div>
 
     <footer>
-        <p>ClearView — Built for clarity and human connection. Revolution starts here. 🚀</p>
+        <p>ClearView — Clarity, creativity, and ethical growth. Revolutionize with us! 🚀</p>
     </footer>
 
     <script>
-        // Simulated Fact Check (expand later with real API integration)
-        function checkClaim() {
+        // Replace with your Google API key
+        const API_KEY = 'YOUR_API_KEY_HERE'; // Get from console.cloud.google.com
+
+        // Real Fact Check via Google API
+        async function checkClaim() {
             const claim = document.getElementById('claim').value.trim();
             if (!claim) return alert('Paste something to check!');
+            if (API_KEY === 'AIzaSyDUpHCwsOV6HhHRv-ZW-1DhzaZZ2JBXc48') return alert('Add your Google API key first!');
+
             const result = document.getElementById('result');
             result.style.display = 'block';
-            result.innerHTML = `
-                <h3>Analysis for: "${claim}"</h3>
-                <p><strong>Verified Truth:</strong> [Simulated: Mostly balanced sources confirm core facts.]</p>
-                <p><strong>Bias Rating:</strong> Neutral to center-left (multiple viewpoints checked).</p>
-                <p><strong>Missing Context:</strong> Often overlooks [simulated detail].</p>
-                <p><em>Real version coming soon — powered by balanced sources from all sides.</em></p>
-            `;
+            result.innerHTML = '<p>Checking... (uses free Google Fact Check API)</p>';
+
+            try {
+                const response = await fetch(`https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodeURIComponent(claim)}&key=${API_KEY}&pageSize=5`);
+                const data = await response.json();
+                
+                if (data.claims && data.claims.length > 0) {
+                    let html = `<h3>Results for: "${claim}"</h3>`;
+                    data.claims.forEach(claimResult => {
+                        const verdict = claimResult.claimReviewMarkup?.verdict || 'No verdict';
+                        const text = claimResult.text || 'N/A';
+                        const url = claimResult.claimReviewMarkup?.url || '#';
+                        html += `
+                            <div class="verdict">${verdict}</div>
+                            <p><strong>Claim:</strong> ${text}</p>
+                            <a href="${url}" class="source" target="_blank">Source Fact-Check</a><br>
+                            <small>Publisher: ${claimResult.claimReviewMarkup?.publisher?.name || 'Unknown'}</small>
+                        `;
+                    });
+                    html += '<p><em>Balanced from global sources. No results? May need more context.</em></p>';
+                    result.innerHTML = html;
+                } else {
+                    result.innerHTML = `<h3>No exact matches.</h3><p>Try rephrasing or check <a href="https://toolbox.google.com/factcheck" target="_blank">Google Fact Check Explorer</a>.</p>`;
+                }
+            } catch (error) {
+                result.innerHTML = `<p>Error: ${error.message}. Check API key/quota.</p>`;
+            }
         }
 
-        // MindBlow Movies Community (localStorage persistence)
+        // MindBlow Movies (unchanged)
         const starterMovies = [
             { title: "Inception", year: 2010, why: "Dreams within dreams, reality-bending action, and a spinning top that haunts you forever.", poster: "https://images.squarespace-cdn.com/content/v1/5ec686197f8b2976074846c2/1618808739151-PKSPYXYU8S9COG5BJHO2/Inception_01+CMYK.jpg" },
             { title: "The Matrix", year: 1999, why: "Red pill or blue? Questions reality itself and kickstarted a philosophical revolution.", poster: "https://filmartgallery.com/cdn/shop/products/The-Matrix-Vintage-Movie-Poster-Original.jpg?v=1738903563" },
@@ -90,25 +131,23 @@
             list.innerHTML = '';
             saved.forEach(movie => {
                 const card = document.createElement('div');
-                card.className = 'movie-card';
+                card.className = 'card';
                 card.innerHTML = `
-                    ${movie.poster ? `<img src="${movie.poster}" alt="${movie.title} poster">` : ''}
+                    ${movie.poster ? `<img src="${movie.poster}" alt="${movie.title}">` : ''}
                     <h3>${movie.title} (${movie.year})</h3>
-                    <p><strong>Why mind-blowing:</strong> ${movie.why}</p>
+                    <p><strong>Why:</strong> ${movie.why}</p>
                 `;
                 list.appendChild(card);
             });
-            localStorage.setItem('mindblowMovies', JSON.stringify(saved));
         }
 
         function addMovie() {
             const title = document.getElementById('movie-title').value.trim();
             const year = document.getElementById('movie-year').value.trim();
             const why = document.getElementById('movie-why').value.trim();
-            if (!title || !why) return alert('Fill in title and why!');
-            
+            if (!title || !why) return alert('Fill title and why!');
             const movies = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
-            movies.push({ title, year, why, poster: '' }); // Poster optional for now
+            movies.push({ title, year, why });
             localStorage.setItem('mindblowMovies', JSON.stringify(movies));
             document.getElementById('movie-title').value = '';
             document.getElementById('movie-year').value = '';
@@ -116,8 +155,44 @@
             loadMovies();
         }
 
-        loadMovies(); // Initial load
+        // Business Spotlight
+        const starterBusinesses = [
+            { name: "Snopes", url: "https://snopes.com", desc: "Leading fact-checking site — partner for truth." },
+            { name: "IndieFilm Hub", url: "https://example.com/indiefilm", desc: "Supports mind-blowing indie movies with ethical production." }
+        ];
+
+        function loadBusinesses() {
+            const saved = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
+            const list = document.getElementById('business-list');
+            list.innerHTML = '';
+            saved.forEach(biz => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${biz.name}</h3>
+                    <p>${biz.desc}</p>
+                    <a href="${biz.url}" target="_blank">Visit Site</a>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function addBusiness() {
+            const name = document.getElementById('business-name').value.trim();
+            const url = document.getElementById('business-url').value.trim();
+            const desc = document.getElementById('business-desc').value.trim();
+            if (!name || !desc) return alert('Fill name and description!');
+            const businesses = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
+            businesses.push({ name, url, desc });
+            localStorage.setItem('spotlightBusinesses', JSON.stringify(businesses));
+            document.getElementById('business-name').value = '';
+            document.getElementById('business-url').value = '';
+            document.getElementById('business-desc').value = '';
+            loadBusinesses();
+        }
+
+        loadMovies();
+        loadBusinesses();
     </script>
 </body>
-
 </html>
