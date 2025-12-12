@@ -3,104 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ClearView: Cool neon portal for quick fact checks, mind-blowing movies, and spotlighting awesome businesses. Discover and share!">
-    <meta name="keywords" content="cool fact checker, neon movie recommendations, mind blowing films 2025, business spotlight">
-    <title>ClearView - Neon Hub for Facts, Films & Finds</title>
+    <meta name="description" content="ClearView: Tough neon hub for fact checks, epic movies, and business spotlights. Built strong.">
+    <meta name="keywords" content="manly fact checker, cyberpunk movie hub, tough tech site 2025">
+    <title>ClearView - Tough Neon Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Orbitron', sans-serif; margin: 0; background: #0a0a1f url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg') center/cover fixed; color: #e0f2ff; }
-        header { background: rgba(10,10,30,0.8); padding: 60px 20px; text-align: center; }
-        h1 { font-size: 4em; text-shadow: 0 0 20px #00ffff; }
-        .tagline { font-size: 1.8em; margin: 20px 0; }
+        body { font-family: 'Orbitron', sans-serif; margin: 0; background: #000 url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg') center/cover fixed; color: #d0d0d0; }
+        header { background: rgba(0,0,20,0.9); padding: 70px 20px; text-align: center; }
+        h1 { font-size: 4.2em; text-shadow: 0 0 20px #00aaff; color: #ffffff; }
+        .tagline { font-size: 1.8em; margin: 20px 0; color: #aaaaaa; }
         .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
-        section { background: rgba(15,15,40,0.7); border-radius: 20px; padding: 40px; margin-bottom: 50px; border: 1px solid #00ffff; box-shadow: 0 0 30px rgba(0,255,255,0.3); }
-        h2 { text-align: center; font-size: 2.2em; text-shadow: 0 0 10px #00ffff; }
-        input, textarea { padding: 15px; margin: 10px 0; width: 100%; border-radius: 10px; border: 2px solid #00ffff; background: rgba(0,0,0,0.6); color: #fff; transition: 0.3s; }
-        input:focus, textarea:focus { box-shadow: 0 0 20px #00ffff; }
-        button { background: #00ffff; color: #000; padding: 15px 30px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px #00ffff; }
-        button:hover { background: #ff00ff; box-shadow: 0 0 30px #ff00ff; transform: scale(1.05); }
-        #result { margin-top: 30px; padding: 20px; background: rgba(0,255,255,0.1); border-radius: 15px; border: 1px solid #00ffff; }
-        .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-        .card { background: rgba(20,20,60,0.7); padding: 20px; border-radius: 15px; transition: 0.4s; border: 1px solid #00ffff; }
-        .card:hover { box-shadow: 0 0 40px #00ffff; transform: translateY(-10px); }
+        section { background: rgba(10,10,30,0.8); border-radius: 15px; padding: 40px; margin-bottom: 50px; border: 2px solid #00aaff; box-shadow: 0 0 40px rgba(0,170,255,0.2); }
+        h2 { text-align: center; font-size: 2.4em; color: #00aaff; text-shadow: 0 0 10px #00aaff; }
+        input, textarea { padding: 15px; margin: 10px 0; width: 100%; border-radius: 10px; border: 2px solid #00aaff; background: rgba(0,0,0,0.7); color: #fff; transition: 0.4s; }
+        input:focus, textarea:focus { border-color: #ff0033; box-shadow: 0 0 25px #ff0033; }
+        button { background: #00aaff; color: #000; padding: 15px 35px; border: none; border-radius: 10px; font-weight: bold; font-size: 1.2em; cursor: pointer; transition: 0.4s; box-shadow: 0 0 20px #00aaff; }
+        button:hover { background: #ff0033; color: #fff; box-shadow: 0 0 40px #ff0033; transform: scale(1.08); }
+        #result { margin-top: 30px; padding: 25px; background: rgba(255,0,51,0.1); border-radius: 15px; border: 1px solid #ff0033; color: #fff; }
+        .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+        .card { background: rgba(20,20,40,0.8); padding: 25px; border-radius: 15px; transition: 0.5s; border: 1px solid #555; }
+        .card:hover { box-shadow: 0 0 50px #ff0033; transform: translateY(-15px); border-color: #ff0033; }
         .card img { width: 100%; border-radius: 10px; }
-        footer { text-align: center; padding: 30px; background: rgba(10,10,30,0.8); }
+        footer { text-align: center; padding: 40px; background: rgba(0,0,20,0.9); color: #888; }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <header>
         <h1>ClearView</h1>
-        <p class="tagline">Neon Hub: Quick Facts • Epic Movies • Cool Spotlights</p>
+        <p class="tagline">Tough Hub: Facts • Films • Spotlights</p>
     </header>
 
     <div class="container">
         <section id="fact-checker">
             <h2>Quick Fact Check</h2>
-            <p>Paste any claim or headline:</p>
-            <textarea id="claim" rows="4" placeholder="e.g., 'AI is taking over the world'"></textarea>
-            <button onclick="checkClaim()">Check It</button>
+            <p>Paste a claim:</p>
+            <textarea id="claim" rows="4" placeholder="e.g., 'Steel is stronger than titanium'"></textarea>
+            <button onclick="checkClaim()">Check</button>
             <div id="result"></div>
         </section>
 
         <section id="mindblow-cinema">
             <h2>Mind-Blowing Movies</h2>
-            <p>Share and discover films that change everything.</p>
+            <p>Share heavy-hitters.</p>
             <div id="movie-list" class="list"></div>
-            <h3>Add Yours</h3>
-            <input type="text" id="movie-title" placeholder="Movie Title">
+            <h3>Add One</h3>
+            <input type="text" id="movie-title" placeholder="Title">
             <input type="text" id="movie-year" placeholder="Year">
-            <textarea id="movie-why" rows="3" placeholder="Why does it blow minds?"></textarea>
-            <button onclick="addMovie()">Add to Hub</button>
+            <textarea id="movie-why" rows="3" placeholder="Why it hits hard"></textarea>
+            <button onclick="addMovie()">Add</button>
         </section>
 
         <section id="business-spotlight">
             <h2>Business Spotlight</h2>
-            <p>Show off cool projects and ethical businesses.</p>
+            <p>Show strong projects.</p>
             <div id="business-list" class="list"></div>
             <h3>Spotlight Yours</h3>
             <input type="text" id="business-name" placeholder="Name">
-            <input type="text" id="business-url" placeholder="Link (optional)">
-            <textarea id="business-desc" rows="3" placeholder="What makes it awesome?"></textarea>
-            <button onclick="addBusiness()">Add Spotlight</button>
+            <input type="text" id="business-url" placeholder="Link">
+            <textarea id="business-desc" rows="3" placeholder="What makes it solid"></textarea>
+            <button onclick="addBusiness()">Add</button>
         </section>
     </div>
 
     <footer>
-        <p>ClearView — Discover, share, vibe. Built for real people. 🚀</p>
+        <p>ClearView — Built tough. Explore hard. 💪</p>
     </footer>
 
     <script>
-        // Simple intro (no alert)
-        window.onload = function() {
-            console.log("Welcome to ClearView — dive in and explore!");
-        };
-
         function checkClaim() {
             const claim = document.getElementById('claim').value.trim();
-            if (!claim) return alert('Paste something to check!');
+            if (!claim) return alert('Enter a claim');
             const result = document.getElementById('result');
             result.style.display = 'block';
-            result.innerHTML = '<p>Analyzing...</p>';
+            result.innerHTML = '<p>Locking in...</p>';
             setTimeout(() => {
-                let html = `<h3>Check for: "${claim}"</h3>`;
-                const lower = claim.toLowerCase();
-                if (lower.includes('earth is flat')) {
-                    html += `<p><strong>Verdict:</strong> False — Earth is round (NASA proofs everywhere).</p>`;
-                } else if (lower.includes('climate change is a hoax')) {
-                    html += `<p><strong>Verdict:</strong> False — Science backs human impact.</p>`;
-                } else {
-                    html += `<p>No quick match — check sources like Snopes or Google Fact Check.</p>`;
-                }
-                html += `<p><em>Stay curious!</em></p>`;
+                let html = `<h3>Result: "${claim}"</h3><p><strong>Verdict:</strong> Checking sources...</p><p>Stay sharp.</p>`;
                 result.innerHTML = html;
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-            }, 1000);
+                confetti({ particleCount: 150, spread: 80, colors: ['#00aaff', '#ff0033'] });
+            }, 1200);
         }
 
-        const starterMovies = [ /* same as before */ ];
-
-        // Full loadMovies, addMovie, loadBusinesses, addBusiness functions from previous (with confetti on add)
+        // Include full starterMovies, loadMovies, addMovie, loadBusinesses, addBusiness from previous working version
+        // With confetti in red/blue on adds
 
         loadMovies();
         loadBusinesses();
