@@ -82,11 +82,43 @@
         const API_KEY = 'AIzaSyD_LVYBibLD15SLwCGlyHJRoWTdmS2l7Ic'; // Get from console.cloud.google.com
 
         // Real Fact Check via Google API
-        async function checkClaim() {
-            const claim = document.getElementById('claim').value.trim();
-            if (!claim) return alert('Paste something to check!');
-            if (API_KEY === 'AIzaSyD_LVYBibLD15SLwCGlyHJRoWTdmS2l7Ic') return alert('Add your Google API key first!');
+      function checkClaim() {
+    const claim = document.getElementById('claim').value.trim();
+    if (!claim) return alert('Paste a claim to check!');
 
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+
+    // Simulated realistic responses based on well-known claims (expandable later)
+    let html = `<h3>ClearView Analysis for: "${claim}"</h3>`;
+    
+    // Common claim examples (add more as needed)
+    const lowerClaim = claim.toLowerCase();
+    if (lowerClaim.includes('earth is flat') || lowerClaim.includes('flat earth')) {
+        html += `<p><strong>Verdict:</strong> False (Scientific consensus: Earth is an oblate spheroid).</p>
+                 <p><strong>Sources:</strong> NASA, multiple independent observations.</p>
+                 <p><strong>Bias Note:</strong> Often promoted in conspiracy communities.</p>`;
+    } else if (lowerClaim.includes('climate change is a hoax') || lowerClaim.includes('global warming hoax')) {
+        html += `<p><strong>Verdict:</strong> False (Overwhelming scientific agreement on human-caused warming).</p>
+                 <p><strong>Sources:</strong> IPCC, NASA, 97%+ of climate scientists.</p>
+                 <p><strong>Missing Context:</strong> Natural cycles exist but don't explain current rapid changes.</p>`;
+    } else if (lowerClaim.includes('vaccines cause autism')) {
+        html += `<p><strong>Verdict:</strong> False (Originated from debunked 1998 study; retracted).</p>
+                 <p><strong>Sources:</strong> CDC, WHO, large-scale studies.</p>`;
+    } else if (lowerClaim.includes('moon landing was faked')) {
+        html += `<p><strong>Verdict:</strong> False (Evidence: Rocks, laser reflectors, photos).</p>
+                 <p><strong>Sources:</strong> NASA, independent verification.</p>`;
+    } else {
+        html += `<p><strong>No exact match in common fact-checks.</strong></p>
+                 <p>Try a well-known claim, or search manually for real-time results:</p>
+                 <a href="https://toolbox.google.com/factcheck/explorer/search/${encodeURIComponent(claim)};hl=en" target="_blank">Check on Google Fact Check Explorer</a><br><br>
+                 <a href="https://www.snopes.com/search/?q=${encodeURIComponent(claim)}" target="_blank">Search Snopes</a><br>
+                 <a href="https://www.politifact.com/search/?q=${encodeURIComponent(claim)}" target="_blank">Search PolitiFact</a>`;
+    }
+    
+    html += `<p><em>ClearView promotes balanced truth-seeking. Real API integration coming as we grow!</em></p>`;
+    result.innerHTML = html;
+}
             const result = document.getElementById('result');
             result.style.display = 'block';
             result.innerHTML = '<p>Checking... (uses free Google Fact Check API)</p>';
@@ -196,5 +228,6 @@
     </script>
 </body>
 </html>
+
 
 
