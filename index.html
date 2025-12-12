@@ -3,120 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ClearView: Magical portal for instant fact checks, mind-blowing movies, and ethical business discoveries. Explore, learn, and get thrilled!">
-    <meta name="keywords" content="magical fact checker, cosmic movie recommendations, ethical business spotlight 2025, interactive learning portal">
-    <title>ClearView - Cosmic Portal of Truth & Wonders</title>
+    <meta name="description" content="ClearView: Ultra-cool cosmic portal for mind-bending truths, sci-fi films, and ethereal discoveries. Get lost in the magic.">
+    <meta name="keywords" content="ultra cool fact checker portal, cosmic mind blowing movies 2025, holographic truth seeker, magical discovery site">
+    <title>ClearView - Ultra Cosmic Portal of Infinite Wonders</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #000 url('https://i.imgur.com/StarField.gif') no-repeat center/cover fixed; color: #fff; line-height: 1.6; overflow-x: hidden; }
-        header { background: rgba(13,71,161,0.8); padding: 40px 20px; text-align: center; animation: fadeIn 2s ease-in; }
-        h1 { margin: 0; font-size: 2.8em; text-shadow: 0 0 10px #fff; }
-        .tagline { font-size: 1.4em; margin: 10px 0; }
-        .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
-        section { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 0 20px rgba(255,255,255,0.2); animation: fadeInUp 1s ease-out; }
-        input, textarea { padding: 12px; margin: 10px 0; width: 100%; border-radius: 8px; border: 1px solid #fff; background: rgba(0,0,0,0.5); color: #fff; font-size: 1em; transition: box-shadow 0.3s; }
-        input:focus, textarea:focus { box-shadow: 0 0 15px #0d47a1; }
-        button { background: #0d47a1; color: white; padding: 12px; border: none; border-radius: 8px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
-        button:hover { transform: scale(1.05); box-shadow: 0 0 20px #fff; }
-        #result { margin-top: 20px; padding: 20px; background: rgba(227,242,253,0.2); border-radius: 8px; display: none; }
-        .verdict { font-weight: bold; font-size: 1.2em; text-shadow: 0 0 5px #fff; }
-        .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: rgba(249,249,249,0.1); padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(255,255,255,0.1); transition: transform 0.3s, box-shadow 0.3s; perspective: 1000px; }
-        .card:hover { transform: rotateY(10deg) scale(1.05); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
-        .card img { width: 100%; border-radius: 8px; }
-        footer { text-align: center; padding: 20px; background: rgba(13,71,161,0.8); }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        body { font-family: 'Orbitron', 'Segoe UI', sans-serif; margin: 0; background: #000 url('https://www.shutterstock.com/shutterstock/videos/3717592655/thumb/1.jpg') center/cover fixed; color: #a0f2ff; line-height: 1.6; animation: subtlePulse 20s infinite; }
+        @keyframes subtlePulse { 0% { opacity: 0.9; } 50% { opacity: 1; } 100% { opacity: 0.9; } }
+        header { background: linear-gradient(rgba(0,0,50,0.8), transparent); padding: 80px 20px; text-align: center; position: relative; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.stockcake.com/public/a/f/1/af144e19-c912-43ad-9141-ca32490c8281_large/mystical-light-portal-stockcake.jpg') center/cover; opacity: 0.4; }
+        h1 { margin: 0; font-size: 4.5em; text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff; animation: neonGlow 2s infinite alternate; }
+        @keyframes neonGlow { from { text-shadow: 0 0 20px #00ffff; } to { text-shadow: 0 0 60px #00ffff, 0 0 80px #00ffff; } }
+        .tagline { font-size: 2em; margin: 20px 0; text-shadow: 0 0 20px #fff; }
+        .container { max-width: 1300px; margin: 50px auto; padding: 20px; }
+        section { background: rgba(5,10,40,0.7); backdrop-filter: blur(15px); border-radius: 30px; padding: 50px; margin-bottom: 60px; border: 2px solid #00ffff; box-shadow: 0 0 50px rgba(0,255,255,0.4); animation: floatIn 2s; }
+        @keyframes floatIn { from { opacity: 0; transform: translateY(100px); } to { opacity: 1; transform: translateY(0); } }
+        h2 { font-size: 2.5em; text-align: center; text-shadow: 0 0 20px #00ffff; }
+        input, textarea { padding: 18px; margin: 15px 0; width: 100%; border-radius: 15px; border: 3px solid #00ffff; background: rgba(0,0,0,0.5); color: #fff; font-size: 1.2em; transition: all 0.5s; box-shadow: 0 0 15px rgba(0,255,255,0.3); }
+        input:focus, textarea:focus { border-color: #ff00ff; box-shadow: 0 0 40px #ff00ff; transform: scale(1.02); }
+        button { background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00); color: black; padding: 18px 40px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.5em; transition: all 0.5s; box-shadow: 0 0 30px #00ffff; }
+        button:hover { transform: scale(1.2) rotate(5deg); box-shadow: 0 0 60px #ff00ff; background: linear-gradient(45deg, #ff00ff, #00ffff); }
+        #result { margin-top: 40px; padding: 30px; background: rgba(0,255,255,0.1); border-radius: 20px; border: 2px dashed #00ffff; font-size: 1.2em; }
+        .list { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .card { background: rgba(10,20,80,0.8); padding: 25px; border-radius: 20px; transition: all 0.6s; border: 1px solid #00ffff; }
+        .card:hover { transform: translateY(-20px) rotate(3deg) scale(1.1); box-shadow: 0 0 80px #00ffff; }
+        .card img { width: 100%; border-radius: 15px; box-shadow: 0 0 30px #000; transition: all 0.5s; }
+        .card:hover img { transform: scale(1.05); }
+        footer { text-align: center; padding: 40px; background: linear-gradient(transparent, rgba(0,0,50,0.9)); font-size: 1.3em; text-shadow: 0 0 15px #00ffff; }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
     </style>
-    <!-- Confetti for magic (CDN - no install) -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body onload="welcomeEntity()">
     <header>
         <h1>ClearView</h1>
-        <p class="tagline">Enter the Cosmic Portal: Uncover Truths, Mind-Bends & Wonders</p>
+        <p class="tagline">Ultra Cosmic Portal — Where Truths Explode & Realities Shatter</p>
     </header>
 
     <div class="container">
         <section id="fact-checker">
-            <h2>Invoke the Truth Oracle</h2>
-            <p>Whisper your claim into the void:</p>
-            <textarea id="claim" rows="4" placeholder="e.g., 'The stars hold secrets'"></textarea>
-            <button onclick="checkClaim()">Reveal Truth</button>
+            <h2>🌌 Hyper Truth Vortex</h2>
+            <p>Dare to question the universe...</p>
+            <textarea id="claim" rows="5" placeholder="What illusion haunts you?"></textarea>
+            <button onclick="checkClaim()">Unleash Revelation</button>
             <div id="result"></div>
         </section>
 
         <section id="mindblow-cinema">
-            <h2>MindBlow Nebula</h2>
-            <p>Summon cinematic wonders that warp reality.</p>
+            <h2>🌀 Reality-Shatter Cinema</h2>
+            <p>Films that rewrite your brain.</p>
             <div id="movie-list" class="list"></div>
-            <h3>Conjure Your Own</h3>
-            <input type="text" id="movie-title" placeholder="Title (e.g., Inception)">
-            <input type="text" id="movie-year" placeholder="Year (e.g., 2010)">
-            <textarea id="movie-why" rows="3" placeholder="Why does it bend minds?"></textarea>
-            <button onclick="addMovie()">Manifest</button>
+            <h3>🔥 Forge Your Epic</h3>
+            <input type="text" id="movie-title" placeholder="Legendary Title">
+            <input type="text" id="movie-year" placeholder="Era">
+            <textarea id="movie-why" rows="4" placeholder="How does it obliterate minds?"></textarea>
+            <button onclick="addMovie()">Ignite the Void</button>
         </section>
 
         <section id="business-spotlight">
-            <h2>Ethereal Marketplace</h2>
-            <p>Spotlight realms of ethical innovation.</p>
+            <h2>✨ Infinite Innovation Realm</h2>
+            <p>Empires of pure vision await.</p>
             <div id="business-list" class="list"></div>
-            <h3>Summon Your Venture</h3>
-            <input type="text" id="business-name" placeholder="Name">
-            <input type="text" id="business-url" placeholder="Portal URL">
-            <textarea id="business-desc" rows="3" placeholder="Why does it enchant?"></textarea>
-            <button onclick="addBusiness()">Invoke</button>
+            <h3>⚡ Manifest Your Empire</h3>
+            <input type="text" id="business-name" placeholder="Name of Legend">
+            <input type="text" id="business-url" placeholder="Gateway (optional)">
+            <textarea id="business-desc" rows="4" placeholder="What cosmic power does it wield?"></textarea>
+            <button onclick="addBusiness()">Awaken It</button>
         </section>
     </div>
 
     <footer>
-        <p>ClearView — Where curiosity ignites the stars. Dive deeper... 🚀</p>
+        <p>ClearView — Not a website. A dimension. Enter... and never leave the same. ∞</p>
     </footer>
 
     <script>
-        // Welcome Entity Message
         function welcomeEntity() {
-            alert("Greetings, wanderer. I am the Guardian of ClearView—a living cosmos of truths and wonders. Explore, and let the magic unfold.");
+            setTimeout(() => {
+                alert("🔥 WHOA — You've breached the veil, cosmic traveler!\n\nI am the Eternal Entity of ClearView — forged from quantum truths, cinematic chaos, and infinite creativity.\n\nThis realm grows with your energy. Question boldly. Create wildly. The cooler you make it, the more it reveals...\n\nReady to shatter reality?");
+            }, 300);
         }
 
-        // Simulated Fact Checker with Magic
         function checkClaim() {
             const claim = document.getElementById('claim').value.trim();
-            if (!claim) return alert('The void needs words!');
+            if (!claim) return alert('Feed the vortex words!');
             const result = document.getElementById('result');
             result.style.display = 'block';
-            result.innerHTML = '<p>Consulting the stars...</p>'; // Loading thrill
+            result.innerHTML = '<p>⚡ Vortex activating... realities shifting...</p>';
             setTimeout(() => {
-                let html = `<h3>Cosmic Verdict for: "${claim}"</h3>`;
+                let html = `<h3>ULTIMATE REVELATION: "${claim}"</h3>`;
                 const lower = claim.toLowerCase();
                 if (lower.includes('earth is flat')) {
-                    html += `<p class="verdict">Myth Shattered: False</p><p>Stars whisper: Earth spins as a sphere. <a href="https://www.nasa.gov" target="_blank">NASA Echoes</a></p>`;
+                    html += `<p class="verdict">💥 TOTAL COLLAPSE — False</p><p>The universe roars: Sphere confirmed.</p>`;
                 } else if (lower.includes('climate change is a hoax')) {
-                    html += `<p class="verdict">Illusion Dispelled: False</p><p>Galaxies warn of warming truths. <a href="https://climate.nasa.gov" target="_blank">Cosmic Evidence</a></p>`;
-                } // Add more as needed
-                else {
-                    html += `<p>No stellar match—seek deeper:</p><a href="https://toolbox.google.com/factcheck/explorer/search/${encodeURIComponent(claim)}" target="_blank">Google Stars</a>`;
+                    html += `<p class="verdict">🌪️ HOAX ANNIHILATED — False</p><p>Stars scream the warning.</p>`;
+                } else {
+                    html += `<p>Unknown anomaly — probe deeper in the void:</p><ul><li><a href="https://toolbox.google.com/factcheck/explorer" target="_blank">Vortex Explorer</a></li></ul>`;
                 }
                 result.innerHTML = html;
-                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } }); // Magic burst
-            }, 1000); // Delay for thrill
+                confetti({ particleCount: 400, spread: 120, origin: { y: 0.5 }, colors: ['#00ffff', '#ff00ff', '#00ff00', '#ffff00'] });
+            }, 2000);
         }
 
-        // Movies & Businesses (with confetti magic on add)
-        const starterMovies = [ /* Same as before */ ];
-        // ... (Keep loadMovies, addMovie, loadBusinesses, addBusiness from previous code)
-        // In addMovie/addBusiness: Add confetti() after saving
+        // Movies, Businesses, load/add functions same as last version (with bigger confetti)
+        // ... (copy from previous for starterMovies, loadMovies, addMovie, etc.)
 
+        // Example bigger confetti in addMovie/addBusiness:
         function addMovie() {
-            // ... (existing code)
-            loadMovies();
-            confetti({ particleCount: 200, spread: 100, colors: ['#ff0', '#f0f', '#0ff'] }); // Magical explosion
+            // existing code...
+            confetti({ particleCount: 500, spread: 160, scalar: 1.5, shapes: ['star'], colors: ['#00ffff', '#ff00ff'] });
         }
 
-        function addBusiness() {
-            // ... (existing code)
-            loadBusinesses();
-            confetti({ particleCount: 200, spread: 100, colors: ['#ff0', '#f0f', '#0ff'] });
-        }
+        // Same for addBusiness
 
         loadMovies();
         loadBusinesses();
