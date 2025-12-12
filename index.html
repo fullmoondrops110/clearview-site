@@ -76,158 +76,134 @@
     <footer>
         <p>ClearView — Clarity, creativity, and ethical growth. Revolutionize with us! 🚀</p>
     </footer>
+<script>
+    // Clean Simulated Fact Checker (no async/await, no API needed)
+    function checkClaim() {
+        const claim = document.getElementById('claim').value.trim();
+        if (!claim) {
+            alert('Paste a claim to check!');
+            return;
+        }
 
-    <script>
-        // Replace with your Google API key
-        const API_KEY = 'AIzaSyD_LVYBibLD15SLwCGlyHJRoWTdmS2l7Ic'; // Get from console.cloud.google.com
+        const result = document.getElementById('result');
+        result.style.display = 'block';
 
-        // Real Fact Check via Google API
-      function checkClaim() {
-    const claim = document.getElementById('claim').value.trim();
-    if (!claim) return alert('Paste a claim to check!');
+        let html = `<h3>ClearView Analysis: "${claim}"</h3>`;
+        
+        const lowerClaim = claim.toLowerCase();
 
-    const result = document.getElementById('result');
-    result.style.display = 'block';
+        if (lowerClaim.includes('earth is flat') || lowerClaim.includes('flat earth')) {
+            html += `<p><strong>Verdict:</strong> False</p>
+                     <p>Scientific evidence from NASA, satellite imagery, and physics confirms Earth is an oblate spheroid.</p>
+                     <p><a href="https://www.snopes.com/fact-check/flat-earth/" target="_blank">More on Snopes</a></p>`;
+        } else if (lowerClaim.includes('climate change is a hoax') || lowerClaim.includes('global warming hoax')) {
+            html += `<p><strong>Verdict:</strong> False</p>
+                     <p>97%+ of climate scientists agree: human activity is causing rapid global warming.</p>
+                     <p><a href="https://climate.nasa.gov/evidence/" target="_blank">NASA Evidence</a> | <a href="https://www.ipcc.ch/" target="_blank">IPCC Reports</a></p>`;
+        } else if (lowerClaim.includes('vaccines cause autism')) {
+            html += `<p><strong>Verdict:</strong> False</p>
+                     <p>The 1998 study was retracted; dozens of large studies found no link.</p>
+                     <p><a href="https://www.cdc.gov/vaccinesafety/concerns/autism.html" target="_blank">CDC Info</a></p>`;
+        } else if (lowerClaim.includes('moon landing was faked') || lowerClaim.includes('moon landing hoax')) {
+            html += `<p><strong>Verdict:</strong> False</p>
+                     <p>Moon rocks, laser reflectors left on the Moon, and photos confirm Apollo missions.</p>
+                     <p><a href="https://www.snopes.com/fact-check/moon-landing-hoax/" target="_blank">Snopes Debunk</a></p>`;
+        } else {
+            html += `<p><strong>No built-in analysis for this claim yet.</strong></p>
+                     <p>Search real-time fact checks here:</p>
+                     <ul>
+                         <li><a href="https://toolbox.google.com/factcheck/explorer/search/${encodeURIComponent(claim)};hl=en" target="_blank">Google Fact Check Explorer</a></li>
+                         <li><a href="https://www.snopes.com/search/?q=${encodeURIComponent(claim)}" target="_blank">Snopes</a></li>
+                         <li><a href="https://www.politifact.com/search/?q=${encodeURIComponent(claim)}" target="_blank">PolitiFact</a></li>
+                     </ul>`;
+        }
 
-    // Simulated realistic responses based on well-known claims (expandable later)
-    let html = `<h3>ClearView Analysis for: "${claim}"</h3>`;
-    
-    // Common claim examples (add more as needed)
-    const lowerClaim = claim.toLowerCase();
-    if (lowerClaim.includes('earth is flat') || lowerClaim.includes('flat earth')) {
-        html += `<p><strong>Verdict:</strong> False (Scientific consensus: Earth is an oblate spheroid).</p>
-                 <p><strong>Sources:</strong> NASA, multiple independent observations.</p>
-                 <p><strong>Bias Note:</strong> Often promoted in conspiracy communities.</p>`;
-    } else if (lowerClaim.includes('climate change is a hoax') || lowerClaim.includes('global warming hoax')) {
-        html += `<p><strong>Verdict:</strong> False (Overwhelming scientific agreement on human-caused warming).</p>
-                 <p><strong>Sources:</strong> IPCC, NASA, 97%+ of climate scientists.</p>
-                 <p><strong>Missing Context:</strong> Natural cycles exist but don't explain current rapid changes.</p>`;
-    } else if (lowerClaim.includes('vaccines cause autism')) {
-        html += `<p><strong>Verdict:</strong> False (Originated from debunked 1998 study; retracted).</p>
-                 <p><strong>Sources:</strong> CDC, WHO, large-scale studies.</p>`;
-    } else if (lowerClaim.includes('moon landing was faked')) {
-        html += `<p><strong>Verdict:</strong> False (Evidence: Rocks, laser reflectors, photos).</p>
-                 <p><strong>Sources:</strong> NASA, independent verification.</p>`;
-    } else {
-        html += `<p><strong>No exact match in common fact-checks.</strong></p>
-                 <p>Try a well-known claim, or search manually for real-time results:</p>
-                 <a href="https://toolbox.google.com/factcheck/explorer/search/${encodeURIComponent(claim)};hl=en" target="_blank">Check on Google Fact Check Explorer</a><br><br>
-                 <a href="https://www.snopes.com/search/?q=${encodeURIComponent(claim)}" target="_blank">Search Snopes</a><br>
-                 <a href="https://www.politifact.com/search/?q=${encodeURIComponent(claim)}" target="_blank">Search PolitiFact</a>`;
+        html += `<p><em>ClearView helps you think clearly. Real AI-powered checks coming soon as we grow! 🚀</em></p>`;
+        result.innerHTML = html;
     }
-    
-    html += `<p><em>ClearView promotes balanced truth-seeking. Real API integration coming as we grow!</em></p>`;
-    result.innerHTML = html;
-}
-            const result = document.getElementById('result');
-            result.style.display = 'block';
-            result.innerHTML = '<p>Checking... (uses free Google Fact Check API)</p>';
 
-            try {
-                const response = await fetch(`https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodeURIComponent(claim)}&key=${API_KEY}&pageSize=5`);
-                const data = await response.json();
-                
-                if (data.claims && data.claims.length > 0) {
-                    let html = `<h3>Results for: "${claim}"</h3>`;
-                    data.claims.forEach(claimResult => {
-                        const verdict = claimResult.claimReviewMarkup?.verdict || 'No verdict';
-                        const text = claimResult.text || 'N/A';
-                        const url = claimResult.claimReviewMarkup?.url || '#';
-                        html += `
-                            <div class="verdict">${verdict}</div>
-                            <p><strong>Claim:</strong> ${text}</p>
-                            <a href="${url}" class="source" target="_blank">Source Fact-Check</a><br>
-                            <small>Publisher: ${claimResult.claimReviewMarkup?.publisher?.name || 'Unknown'}</small>
-                        `;
-                    });
-                    html += '<p><em>Balanced from global sources. No results? May need more context.</em></p>';
-                    result.innerHTML = html;
-                } else {
-                    result.innerHTML = `<h3>No exact matches.</h3><p>Try rephrasing or check <a href="https://toolbox.google.com/factcheck" target="_blank">Google Fact Check Explorer</a>.</p>`;
-                }
-            } catch (error) {
-                result.innerHTML = `<p>Error: ${error.message}. Check API key/quota.</p>`;
-            }
-        }
+    // MindBlow Movies
+    const starterMovies = [
+        { title: "Inception", year: 2010, why: "Dreams within dreams — reality gets flipped forever.", poster: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" },
+        { title: "The Matrix", year: 1999, why: "Red pill or blue? Woke up the world to questioning reality.", poster: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg" },
+        { title: "Interstellar", year: 2014, why: "Time, space, love, and black holes — mind officially blown.", poster: "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" }
+    ];
 
-        // MindBlow Movies (unchanged)
-        const starterMovies = [
-            { title: "Inception", year: 2010, why: "Dreams within dreams, reality-bending action, and a spinning top that haunts you forever.", poster: "https://images.squarespace-cdn.com/content/v1/5ec686197f8b2976074846c2/1618808739151-PKSPYXYU8S9COG5BJHO2/Inception_01+CMYK.jpg" },
-            { title: "The Matrix", year: 1999, why: "Red pill or blue? Questions reality itself and kickstarted a philosophical revolution.", poster: "https://filmartgallery.com/cdn/shop/products/The-Matrix-Vintage-Movie-Poster-Original.jpg?v=1738903563" },
-            { title: "Interstellar", year: 2014, why: "Time dilation, black holes, love across dimensions — science and emotion that blows minds.", poster: "https://m.media-amazon.com/images/I/71ljC3i-8uL._AC_UF894,1000_QL80_.jpg" }
-        ];
+    function loadMovies() {
+        const saved = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
+        const list = document.getElementById('movie-list');
+        list.innerHTML = '';
+        saved.forEach(movie => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                ${movie.poster ? `<img src="${movie.poster}" alt="${movie.title}">` : ''}
+                <h3>${movie.title} (${movie.year || ''})</h3>
+                <p><strong>Why mind-blowing:</strong> ${movie.why}</p>
+            `;
+            list.appendChild(card);
+        });
+    }
 
-        function loadMovies() {
-            const saved = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
-            const list = document.getElementById('movie-list');
-            list.innerHTML = '';
-            saved.forEach(movie => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    ${movie.poster ? `<img src="${movie.poster}" alt="${movie.title}">` : ''}
-                    <h3>${movie.title} (${movie.year})</h3>
-                    <p><strong>Why:</strong> ${movie.why}</p>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        function addMovie() {
-            const title = document.getElementById('movie-title').value.trim();
-            const year = document.getElementById('movie-year').value.trim();
-            const why = document.getElementById('movie-why').value.trim();
-            if (!title || !why) return alert('Fill title and why!');
-            const movies = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
-            movies.push({ title, year, why });
-            localStorage.setItem('mindblowMovies', JSON.stringify(movies));
-            document.getElementById('movie-title').value = '';
-            document.getElementById('movie-year').value = '';
-            document.getElementById('movie-why').value = '';
-            loadMovies();
-        }
-
-        // Business Spotlight
-        const starterBusinesses = [
-            { name: "Snopes", url: "https://snopes.com", desc: "Leading fact-checking site — partner for truth." },
-            { name: "IndieFilm Hub", url: "https://example.com/indiefilm", desc: "Supports mind-blowing indie movies with ethical production." }
-        ];
-
-        function loadBusinesses() {
-            const saved = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
-            const list = document.getElementById('business-list');
-            list.innerHTML = '';
-            saved.forEach(biz => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <h3>${biz.name}</h3>
-                    <p>${biz.desc}</p>
-                    <a href="${biz.url}" target="_blank">Visit Site</a>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        function addBusiness() {
-            const name = document.getElementById('business-name').value.trim();
-            const url = document.getElementById('business-url').value.trim();
-            const desc = document.getElementById('business-desc').value.trim();
-            if (!name || !desc) return alert('Fill name and description!');
-            const businesses = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
-            businesses.push({ name, url, desc });
-            localStorage.setItem('spotlightBusinesses', JSON.stringify(businesses));
-            document.getElementById('business-name').value = '';
-            document.getElementById('business-url').value = '';
-            document.getElementById('business-desc').value = '';
-            loadBusinesses();
-        }
-
+    function addMovie() {
+        const title = document.getElementById('movie-title').value.trim();
+        const year = document.getElementById('movie-year').value.trim();
+        const why = document.getElementById('movie-why').value.trim();
+        if (!title || !why) return alert('Fill in title and why!');
+        const movies = JSON.parse(localStorage.getItem('mindblowMovies')) || starterMovies;
+        movies.push({ title, year, why });
+        localStorage.setItem('mindblowMovies', JSON.stringify(movies));
+        document.getElementById('movie-title').value = '';
+        document.getElementById('movie-year').value = '';
+        document.getElementById('movie-why').value = '';
         loadMovies();
+    }
+
+    // Business Spotlight
+    const starterBusinesses = [
+        { name: "Snopes", url: "https://snopes.com", desc: "Independent fact-checking since 1994." },
+        { name: "Letterboxd", url: "https://letterboxd.com", desc: "Community for movie lovers — track and share mind-blowing films." }
+    ];
+
+    function loadBusinesses() {
+        const saved = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
+        const list = document.getElementById('business-list');
+        list.innerHTML = '';
+        saved.forEach(biz => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${biz.name}</h3>
+                <p>${biz.desc}</p>
+                <a href="${biz.url}" target="_blank">Visit →</a>
+            `;
+            list.appendChild(card);
+        });
+    }
+
+    function addBusiness() {
+        const name = document.getElementById('business-name').value.trim();
+        const url = document.getElementById('business-url').value.trim() || '#';
+        const desc = document.getElementById('business-desc').value.trim();
+        if (!name || !desc) return alert('Fill name and description!');
+        const businesses = JSON.parse(localStorage.getItem('spotlightBusinesses')) || starterBusinesses;
+        businesses.push({ name, url, desc });
+        localStorage.setItem('spotlightBusinesses', JSON.stringify(businesses));
+        document.getElementById('business-name').value = '';
+        document.getElementById('business-url').value = '';
+        document.getElementById('business-desc').value = '';
         loadBusinesses();
+    }
+
+    // Load everything on page load
+    loadMovies();
+    loadBusinesses();
+</script>
+    <script>
     </script>
 </body>
 </html>
+
 
 
 
